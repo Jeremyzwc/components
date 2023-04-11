@@ -1,3 +1,4 @@
+import 'package:components/widget/basic_widget.dart';
 import 'package:components/widget/helloword.dart';
 import 'package:components/widget/listview.dart';
 import 'package:components/widget/view_structure.dart';
@@ -16,7 +17,8 @@ class CusMaterialApp extends StatelessWidget {
       debugShowCheckedModeBanner: false, //去掉屏幕右上角的debug标识
       // home: HelloWord(),
       // home: ListViewDemo(),
-      home: ViewStructure(),
+      home: BottomNavigationBarContentTabDemo(),
+      // home: BasicWidgetDemo(),
       theme: ThemeData(
         primarySwatch: Colors.blue, // 设置主题色
       ),

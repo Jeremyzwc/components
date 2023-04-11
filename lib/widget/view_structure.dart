@@ -168,3 +168,66 @@ class BottomNavigationBarDemoState extends State<BottomNavigationBarDemo> {
     );
   }
 }
+
+///bottomBar可切换到对应页面
+class BottomNavigationBarContentTabDemo extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return BottomNavigationBarContentTabState();
+  }
+}
+
+class BottomNavigationBarContentTabState extends State<BottomNavigationBarContentTabDemo> {
+  int _currentIndex = 0;
+
+  //监听状态变化
+  void _onTapHandler(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  // BottomNavigationBarItem 对应的视图
+  final _bottomBarContentTabWidget = <Widget>[
+    //每个标签对应view的内容
+    const Icon(Icons.car_crash, size: 136.0, color: Colors.lightBlue),
+    const Icon(Icons.cabin, size: 136.0, color: Colors.yellow),
+    const Icon(Icons.flag, size: 136.0, color: Colors.red),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('BottomNavigationBarItem切换'),
+        elevation: 0.0,
+        // 去除appbar下的阴影
+      ),
+      body: Container(
+        alignment: Alignment.center,
+        child: _bottomBarContentTabWidget.elementAt(_currentIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,  //设置当前的选中的tab
+        type: BottomNavigationBarType.fixed,//设置是刚好屏幕内填充
+        fixedColor: Colors.red,  //设置选中的颜色
+        onTap: _onTapHandler,
+        // 切换状态的属性
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "首页",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shop),
+            label: "商城",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: "个人中心",
+          ),
+        ],
+      ),
+    );
+  }
+}
